@@ -1,0 +1,60 @@
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">View Gossip</h1>
+  <p class="lead">Here's a juicy gossip for you. Enjoy!</p>
+</div>
+
+<br>
+
+<div class="container">
+<div class="card">
+  <h5 class="card-header">
+    <a <%= link_to "#{@gossip.user.first_name}", user_path(@gossip.user.id) %> • <%= link_to "#{@gossip.user.city.name}", city_path(@gossip.user.city.id) %> </a>
+  </h5>
+    <div class="card-body">
+      <h5 class="card-title"><%= @gossip.title %> </h5>
+      <p class="card-text"><%= @gossip.content %></p>
+      <a <%= link_to "Edit", edit_gossip_path(@gossip.id), :class => "btn btn-outline-primary" %> </a>
+      <a <%= link_to "Delete", gossip_path(@gossip.id), :class => "btn btn-outline-danger", :method => :delete%> </a>
+      <a <%= link_to "Comment", new_gossip_comment_path(@gossip.id), :class => "btn btn-outline-primary" %> </a>
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Add a Comment</h5>
+          <%= form_tag gossip_comments_path do %>
+          <div class="form-group">
+            <%= text_area_tag :content, placeholder = "Add a comment here...", class: 'form-control no-border' %>
+          </div>
+            <%= submit_tag "Comment", class: 'btn btn-default btn btn-primary' %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="container">
+  <% @gossip.comments.each do |n| %>
+  <div class="media">
+    <!-- <%= image_tag "user.png", :size => "20x20" %> -->
+    <div class="media-body">
+      <h5 class="mt-0"><%= n.user.first_name %></h5>
+      <%= n.content %>
+    </div>
+  </div> <br>
+  <% end %>
+</div>
+</div>

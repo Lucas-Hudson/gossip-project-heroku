@@ -1,0 +1,31 @@
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">The Gossip Project</h1>
+  <p class="lead">All the juicy gossips from THP Session 9. Stay tuned!</p>
+</div>
+
+<div class="row justify-content-center">
+  <a class="btn btn-success btn-lg" <%= link_to "Create New Gossip", new_gossip_path %></a>
+</div> <br><br>
+
+<div class="container">
+  <div class="row">
+    <% @gossips.each do |n| %>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"><%= n.user.first_name %></h5>
+                  <small></small>
+                </div>
+                <p class="card-text"><%= n.title %></p>
+                <a <%= link_to "View", gossip_path(n.id)%> </a>
+              </div>
+            </div>
+          </div>
+        </div><br>
+      </div>
+    <% end %>
+  </div>
+</div>

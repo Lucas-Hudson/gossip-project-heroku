@@ -1,0 +1,31 @@
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4"><%= @city.name %> </h1>
+  <p class="lead">View juicy gossips from <%= @city.name %>.</p>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <% @city.users.each do |u| %>
+    <%   u.gossips.each do |g| %>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"><%= u.first_name %></h5>
+                  <small></small>
+                </div>
+                <p class="card-text"><%= g.title %></p>
+                <a <%= link_to "View", gossip_path(g.id)%> </a>
+              </div>
+            </div>
+          </div>
+        </div><br>
+      </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
