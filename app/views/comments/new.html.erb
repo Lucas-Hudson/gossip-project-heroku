@@ -33,7 +33,7 @@
           <h5 class="card-title">Add a Comment</h5>
           <%= form_tag gossip_comments_path do %>
           <div class="form-group">
-            <%= text_area_tag :content, placeholder = "Add a comment here...", class: 'form-control no-border' %>
+            <%= text_area_tag('content', '', class:'form-control', required:'true', placeholder:"Add your comment here...", required:'true', autofocus: 'true')%>
           </div>
             <%= submit_tag "Comment", class: 'btn btn-default btn btn-primary' %>
             <% end %>

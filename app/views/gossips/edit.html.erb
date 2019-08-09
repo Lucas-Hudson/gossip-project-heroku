@@ -8,7 +8,7 @@
 <div class="container">
 <%= form_for @gossip do |f| %>
   <div class="form-group">
-    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.text_field :title, class: 'form-control', autofocus: 'true' %>
   </div>
   <div class="form-group">
     <%= f.text_area :content, class: 'form-control' %>
