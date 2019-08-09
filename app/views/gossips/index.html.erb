@@ -15,12 +15,26 @@
           <div class="col-12">
             <div class="card">
               <div class="card-body">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1"><%= n.user.first_name %></h5>
-                  <small></small>
-                </div>
+                <h5 class="mb-1"><%= n.user.first_name %></h5>
                 <p class="card-text"><%= n.title %></p>
+              <div class="d-flex w-100 justify-content-between">
                 <a <%= link_to "View", gossip_path(n.id)%> </a>
+                <div>
+                  <% if n.comments.count > 0 %>
+                    <span class="badge badge-pill badge-primary">
+
+                      <% if n.comments.count > 1 %>
+                        <%= n.comments.count %> <%= "Comments" %>
+
+                      <% else %>
+                        <%= n.comments.count %> <%= "Comment" %>
+                      <% end %>
+
+                    </span>
+                  <% end %>
+
+                </div>
+              </div>
               </div>
             </div>
           </div>
